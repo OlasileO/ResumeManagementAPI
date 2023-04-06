@@ -1,23 +1,36 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using ResumeManagementAPI.IRepository;
 using ResumeManagementAPI.Models.Data;
+using ResumeManagementAPI.Repository;
 using Serilog;
 using Serilog.Events;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddDbContext<ResumeContext>(options => options.UseSqlServer(
 builder.Configuration.GetConnectionString("conn")));
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddControllers().AddJsonOptions(x =>
+{
+x.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+});
+
+builder.Services.AddScoped<ICompanyRepo, CompanyRepo>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddCors(options => {
+builder.Services.AddCors(options =>
+{
     options.AddPolicy("AllowAll",
       a => a.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod());
 
-    });
+});
 
 var _logger = new LoggerConfiguration()
     .WriteTo.File(
@@ -30,7 +43,7 @@ builder.Logging.AddSerilog(_logger);
 try
 {
     Log.Information("Application is Starting");
-    
+
 }
 catch (Exception ex)
 {

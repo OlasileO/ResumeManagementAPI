@@ -103,7 +103,7 @@ namespace ResumeManagementAPI.Migrations
                     b.ToTable("companies");
                 });
 
-            modelBuilder.Entity("ResumeManagementAPI.Models.Jobs", b =>
+            modelBuilder.Entity("ResumeManagementAPI.Models.Job", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -127,8 +127,9 @@ namespace ResumeManagementAPI.Migrations
                     b.Property<bool>("isActive")
                         .HasColumnType("bit");
 
-                    b.Property<int>("level")
-                        .HasColumnType("int");
+                    b.Property<string>("level")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -139,7 +140,7 @@ namespace ResumeManagementAPI.Migrations
 
             modelBuilder.Entity("ResumeManagementAPI.Models.Candidates", b =>
                 {
-                    b.HasOne("ResumeManagementAPI.Models.Jobs", "Job")
+                    b.HasOne("ResumeManagementAPI.Models.Job", "Job")
                         .WithMany("Candidates")
                         .HasForeignKey("JobId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -148,7 +149,7 @@ namespace ResumeManagementAPI.Migrations
                     b.Navigation("Job");
                 });
 
-            modelBuilder.Entity("ResumeManagementAPI.Models.Jobs", b =>
+            modelBuilder.Entity("ResumeManagementAPI.Models.Job", b =>
                 {
                     b.HasOne("ResumeManagementAPI.Models.Company", "Company")
                         .WithMany("jobs")
@@ -164,7 +165,7 @@ namespace ResumeManagementAPI.Migrations
                     b.Navigation("jobs");
                 });
 
-            modelBuilder.Entity("ResumeManagementAPI.Models.Jobs", b =>
+            modelBuilder.Entity("ResumeManagementAPI.Models.Job", b =>
                 {
                     b.Navigation("Candidates");
                 });
