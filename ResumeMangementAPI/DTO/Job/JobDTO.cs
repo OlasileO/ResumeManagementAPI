@@ -1,4 +1,5 @@
-﻿using ResumeManagementAPI.Models;
+﻿using ResumeManagementAPI.DTO.Company;
+using ResumeManagementAPI.Models;
 
 namespace ResumeManagementAPI.DTO.Job
 {

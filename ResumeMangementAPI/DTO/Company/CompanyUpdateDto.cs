@@ -1,12 +1,12 @@
 ﻿using ResumeManagementAPI.Models;
 
-namespace ResumeManagementAPI.DTO
+namespace ResumeManagementAPI.DTO.Company
 {
-    public class CompanyDto
+    public class CompanyUpdateDto
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public CompanySize Size { get; set; }
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
+
     }
 }

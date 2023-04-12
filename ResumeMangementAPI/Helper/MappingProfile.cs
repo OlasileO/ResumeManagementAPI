@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using ResumeManagementAPI.DTO;
 using ResumeManagementAPI.DTO.Candidate;
+using ResumeManagementAPI.DTO.Company;
 using ResumeManagementAPI.DTO.Job;
 using ResumeManagementAPI.Models;
 

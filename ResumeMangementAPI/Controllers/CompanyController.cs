@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
-using ResumeManagementAPI.DTO;
+using ResumeManagementAPI.DTO.Company;
 using ResumeManagementAPI.IRepository;
 using ResumeManagementAPI.Models;
 using System.Diagnostics.Metrics;

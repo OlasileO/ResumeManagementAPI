@@ -6,5 +6,6 @@ namespace ResumeManagementAPI.IRepository
     {
         Tuple<int, string> SaveFile(IFormFile File);
         bool DeleteFile(string File);
+  
     }
 }

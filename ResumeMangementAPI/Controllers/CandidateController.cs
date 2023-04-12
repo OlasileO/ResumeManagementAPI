@@ -140,5 +140,6 @@ namespace ResumeManagementAPI.Controllers
             await _candidateRepo.DeleteAsync(id);
             return NoContent();
         }
+
     }
 }
