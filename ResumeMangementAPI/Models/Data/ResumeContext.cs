@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
 
 namespace ResumeManagementAPI.Models.Data
 {
-    public class ResumeContext:DbContext
+    public class ResumeContext:IdentityDbContext<AppUser>
     {
         public ResumeContext(DbContextOptions<ResumeContext> options):base(options) 
         {

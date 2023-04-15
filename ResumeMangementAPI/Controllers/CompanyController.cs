@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using ResumeManagementAPI.DTO.Company;
@@ -8,6 +9,7 @@ using System.Diagnostics.Metrics;
 
 namespace ResumeManagementAPI.Controllers
 {
+    
     [Route("api/[controller]")]
     [ApiController]
     public class CompanyController : ControllerBase
@@ -23,7 +25,7 @@ namespace ResumeManagementAPI.Controllers
             _mapper = mapper;
             _logger = logger;
         }
-
+        [Authorize]
         [HttpGet]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
@@ -35,7 +37,7 @@ namespace ResumeManagementAPI.Controllers
             return result;
         }
 
-
+        [Authorize]
         [HttpGet("{id}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]

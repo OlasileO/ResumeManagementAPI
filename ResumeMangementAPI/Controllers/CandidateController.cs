@@ -1,5 +1,6 @@
 ﻿
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
@@ -14,6 +15,7 @@ using ResumeManagementAPI.Repository;
 
 namespace ResumeManagementAPI.Controllers
 {
+   
     [Route("api/[controller]")]
     [ApiController]
     public class CandidateController : ControllerBase
@@ -29,6 +31,8 @@ namespace ResumeManagementAPI.Controllers
             _mapper = mapper;
             _logger = logger;
         }
+
+        [Authorize]
         [HttpGet]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
@@ -40,6 +44,7 @@ namespace ResumeManagementAPI.Controllers
             return result;
         }
 
+        [Authorize]
         [HttpGet("{id}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
