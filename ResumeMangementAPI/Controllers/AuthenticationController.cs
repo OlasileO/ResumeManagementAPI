@@ -70,18 +70,18 @@ namespace ResumeManagementAPI.Controllers
 
         [HttpPost]
         [Route("refreshToken")]
-        public async Task<IActionResult> RefreshToken(TokenRequestDTO model)
+        public async Task<IActionResult> RefreshToken(TokenRefresh model)
         {
             try
             {
-                if (model != null)
+                if (model == null)
                     return BadRequest("Invalid BadRequest");
                 var result = await _authRepo.GetRefreshToken(model);
                 if (result.StatusCode == 0)
                     return BadRequest(result.StatusMessage);
                 return Ok(result);
-                
-                
+
+
             }
             catch (Exception ex)
             {
@@ -90,31 +90,6 @@ namespace ResumeManagementAPI.Controllers
             }
         }
 
-        //[Authorize]
-        //[HttpPost]
-        //[Route("revoke/username")]
-        //public async Task<IActionResult> Revoke(string username)
-        //{
-        //    var user =await  _userManager.FindByNameAsync(username);
-        //    if (user == null)
-        //        return BadRequest("Invalid UserName");
-        //    user.RefreshToken = null;
-        //    await _userManager.UpdateAsync(user);
-        //    return Ok("Success");
-        //}
 
-        //[Authorize]
-        //[HttpPost]
-        //[Route("revokeAll")]
-        //public async Task<IActionResult> RevokeAll()
-        //{
-        //    var users = await _userManager.Users.ToListAsync();
-        //    foreach (var user in users)
-        //    {
-        //        user.RefreshToken = null;
-        //        await _userManager.UpdateAsync(user);
-        //    }
-        //    return Ok("Success");
-        //}
     }
 }

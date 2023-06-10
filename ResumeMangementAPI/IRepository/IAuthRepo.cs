@@ -1,4 +1,5 @@
 ﻿using ResumeManagementAPI.DTO;
+using ResumeManagementAPI.Models;
 
 namespace ResumeManagementAPI.IRepository
 {
@@ -6,8 +7,7 @@ namespace ResumeManagementAPI.IRepository
     {
         Task<(int, string)> Registration(RegisterDTO dTO, string role);
         Task<TokenDTO> Login(LoginDTO loginDTO);
-        Task<TokenDTO> GetRefreshToken(TokenRequestDTO requestDTO);
-
+        Task<TokenDTO> GetRefreshToken(TokenRefresh requestDTO);
 
     }
 }

@@ -82,14 +82,14 @@ namespace ResumeManagementAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            var comapany = await _companyRepo.GetByIdAsync(x => x.Id == id);
-            if (comapany == null)
+            var company = await _companyRepo.GetByIdAsync(x => x.Id == id);
+            if (company == null)
             {
                 _logger.LogError($"invalid Update Attempt in {nameof(UpdateCompany)}");
                 return BadRequest("Submitted Data is Invalid");
             }
-            _mapper.Map(companyDto, comapany);
-            await _companyRepo.UpdateAsync(comapany);
+            _mapper.Map(companyDto, company);
+            await _companyRepo.UpdateAsync(company);
             return NoContent();
 
         }

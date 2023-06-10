@@ -13,6 +13,7 @@ namespace ResumeManagementAPI.Models.Data
         public DbSet<Job> Jobs { get; set; }
         public DbSet<Candidates> Candidates { get; set; }   
         public DbSet<Company> companies { get; set; }
+        public DbSet<AppUser> AppUsers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

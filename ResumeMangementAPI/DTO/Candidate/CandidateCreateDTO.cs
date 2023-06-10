@@ -10,7 +10,7 @@ namespace ResumeManagementAPI.DTO.Candidate
         public string Phone { get; set; }
         public string Coverletter { get; set; }
         
-        public IFormFile Resume { get; set; }
+        public IFormFile? Resume { get; set; }
         //public string ResumeUrl { get; set; }
         public int JobId { get; set; }
     }

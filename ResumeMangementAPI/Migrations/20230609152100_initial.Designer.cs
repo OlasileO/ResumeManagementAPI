@@ -12,8 +12,8 @@ using ResumeManagementAPI.Models.Data;
 namespace ResumeManagementAPI.Migrations
 {
     [DbContext(typeof(ResumeContext))]
-    [Migration("20230414222719_up")]
-    partial class up
+    [Migration("20230609152100_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -223,6 +223,9 @@ namespace ResumeManagementAPI.Migrations
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
+
+                    b.Property<bool>("isActive")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 

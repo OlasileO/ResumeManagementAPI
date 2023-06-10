@@ -8,5 +8,6 @@ namespace ResumeManagementAPI.Models
         public string LastName { get; set; }
         public string? RefreshToken { get; set; }
         public DateTime RefreshTokenExpiryTime { get; set; }
+        public bool isActive { get; set; } = true;
     }
 }
