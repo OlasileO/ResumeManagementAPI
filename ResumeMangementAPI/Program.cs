@@ -25,8 +25,8 @@ builder.Services.AddIdentity<AppUser, IdentityRole>()
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddControllers().AddJsonOptions(x =>
 {
-x.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
-x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+    x.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+    x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
 });
 
 builder.Services.AddScoped<ICompanyRepo, CompanyRepo>();
@@ -50,6 +50,8 @@ builder.Services.AddAuthentication(options =>
      {
          ValidateIssuer = true,
          ValidateAudience = true,
+         ValidateLifetime = true,
+         ValidateIssuerSigningKey = true,
          ValidAudience = builder.Configuration["JWTKey:ValidAudience"],
          ValidIssuer = builder.Configuration["JWTKey:ValidIssuer"],
          ClockSkew = TimeSpan.Zero,
@@ -100,7 +102,7 @@ app.UseCors("AllowAll");
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
-
+//app.UseMiddleware<jwtMiddleware>();
 app.MapControllers();
 
 app.Run();
